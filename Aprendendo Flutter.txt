@@ -1,0 +1,44 @@
+Flutter: Um mesmo código para multiplas plataformas (Windows, Web, Linux, MacOS, iOS, Android)
+
+Ponto negativo: Performance para uma única plataforma.
+
+Container: Widget que pode conter outros widgets, fornecendo configurações como tamanho, margens, preenchimento, cor de fundo, etc.
+
+Stack: Utilizado para empilhar elementos filhos verticalmente.
+
+Column: Para colocar um widget abaixo ou acima de outro.
+
+Row: Para colocar um widget ao lado do outro (Direita ou Esquerda).
+
+Text
+
+ElevatedButtton
+
+Cuidado com overflows (elementos que saem da tela)
+
+Material Design é o Padrão Google
+
+Cupertino Padrão Apple
+
+Scaffold: é um widget que fornece um layout básico para um aplicativo de Material Design. O Scaffold implementa a estrutura visual básica de um aplicativo, incluindo áreas para AppBar, Drawer, BottomNavigationBar, FloatingActionButton e muito mais. É uma forma conveniente de criar rapidamente a estrutura básica de um aplicativo Flutter, fornecendo muitos dos componentes de interface do usuário comuns já configurados.
+
+Stateless widget: basicamente posso criar um widget estático.
+
+ListView: utilizado para poder scrollar a tela (NOVO: ScrollDiretcion, posso colocar para scrollar horizontalmente assim como o banner no app Ailos)
+
+Stateful widget: widget que permite-se sofrer alterações.
+
+BoxDecoration: Posso definir um arredondamento no container, para imagens, é necessário encapsular dentro de um ClipRRect, onde há o parâmetro borderRadious.
+
+Nomenclatura: utilização do _ para arquivos e para classes CamelCase
+
+Refatoração: Para difivir responsabilidades em arquivos.
+
+Assets: Para carregar imagens a partir do nosso projeto.
+
+Warnings
+
+Gerenciamento através do controller
+
+ErrorBuilder para tratamento de exceções
+
