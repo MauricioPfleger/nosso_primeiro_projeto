@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nosso_primeiro_projeto/components/task.dart';
+import 'package:nosso_primeiro_projeto/data/task_inherited.dart';
 import 'package:nosso_primeiro_projeto/screens/form_screen.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -14,14 +14,6 @@ class InitialScreen extends StatefulWidget {
 class _InitialScreenState extends State<InitialScreen> {
   bool opacidade = true;
 
-  List<Task> tasks = [
-    Task("Flutter", "assets/images/flutter.png", 3, key: UniqueKey()),
-    Task("Bicicleta", "assets/images/bicicleta.png", 2, key: UniqueKey()),
-    Task("Ler", "assets/images/ler.png", 3, key: UniqueKey()),
-    Task("Futebol", "assets/images/futebol.png", 2, key: UniqueKey()),
-    Task("Basquete", "assets/images/basquete.png", 5, key: UniqueKey()),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,15 +25,11 @@ class _InitialScreenState extends State<InitialScreen> {
       body: AnimatedOpacity(
         opacity: opacidade ? 1 : 0,
         duration: const Duration(milliseconds: 800),
-        child: Row(
-          children: [
-            ListView(
-              children: tasks,
-            ),
-            const SizedBox(
-              height: 80,
-            )
-          ],
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.78,
+          child: ListView(
+            children: TaskInherited.of(context).taskList,
+          ),
         ),
       ),
       floatingActionButton: Container(
@@ -54,10 +42,8 @@ class _InitialScreenState extends State<InitialScreen> {
               child: FloatingActionButton(
                 onPressed: () {
                   setState(() {
-                    for (var task in tasks) {
-                      if (task is Task) {
-                        task.resetNivel();
-                      }
+                    for (var task in TaskInherited.of(context).taskList) {
+                      task.resetNivel();
                     }
                   });
                 },
@@ -82,7 +68,8 @@ class _InitialScreenState extends State<InitialScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const FormScreen()));
+                          builder: (contextNew) =>
+                              FormScreen(taskContext: context)));
                 },
                 child: const Icon(Icons.add_circle_outline),
               ),
