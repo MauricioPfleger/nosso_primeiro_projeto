@@ -47,7 +47,7 @@ class _FormScreen extends State<FormScreen> {
                     },
                     controller: nameController,
                     textAlign: TextAlign.center,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Nome",
                         fillColor: Colors.white70,
@@ -68,7 +68,7 @@ class _FormScreen extends State<FormScreen> {
                       keyboardType: TextInputType.number,
                       controller: difficultyController,
                       textAlign: TextAlign.center,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           hintText: "Dificuldade",
                           fillColor: Colors.white70,
@@ -89,7 +89,7 @@ class _FormScreen extends State<FormScreen> {
                     keyboardType: TextInputType.url,
                     controller: imageController,
                     textAlign: TextAlign.center,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Imagem",
                         fillColor: Colors.white70,
@@ -117,9 +117,15 @@ class _FormScreen extends State<FormScreen> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                duration: Duration(milliseconds: 1500),
+                                content: Text("Tarefa adicionada!")));
+                        Navigator.pop(context);
+                      }
                     },
-                    child: Text("Confirmar"))
+                    child: const Text("Confirmar"))
               ],
             ),
           ),

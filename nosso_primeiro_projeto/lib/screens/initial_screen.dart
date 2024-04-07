@@ -14,15 +14,12 @@ class InitialScreen extends StatefulWidget {
 class _InitialScreenState extends State<InitialScreen> {
   bool opacidade = true;
 
-  List<Widget> tasks = [
+  List<Task> tasks = [
     Task("Flutter", "assets/images/flutter.png", 3, key: UniqueKey()),
     Task("Bicicleta", "assets/images/bicicleta.png", 2, key: UniqueKey()),
     Task("Ler", "assets/images/ler.png", 3, key: UniqueKey()),
     Task("Futebol", "assets/images/futebol.png", 2, key: UniqueKey()),
     Task("Basquete", "assets/images/basquete.png", 5, key: UniqueKey()),
-    const SizedBox(
-      height: 80,
-    )
   ];
 
   @override
@@ -36,8 +33,15 @@ class _InitialScreenState extends State<InitialScreen> {
       body: AnimatedOpacity(
         opacity: opacidade ? 1 : 0,
         duration: const Duration(milliseconds: 800),
-        child: ListView(
-          children: tasks,
+        child: Row(
+          children: [
+            ListView(
+              children: tasks,
+            ),
+            const SizedBox(
+              height: 80,
+            )
+          ],
         ),
       ),
       floatingActionButton: Container(
@@ -75,7 +79,10 @@ class _InitialScreenState extends State<InitialScreen> {
               padding: const EdgeInsets.all(8.0),
               child: FloatingActionButton(
                 onPressed: () {
-                  //return FormScreen();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FormScreen()));
                 },
                 child: const Icon(Icons.add_circle_outline),
               ),
